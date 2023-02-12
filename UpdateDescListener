@@ -1,0 +1,10 @@
+import com.atlassian.jira.issue.comments.CommentManager
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.component.ComponentAccessor
+
+CommentManager commentMgr = ComponentAccessor.getCommentManager()
+MutableIssue issue = event.getIssue() as MutableIssue;
+
+def lastcom = commentMgr.getComments(issue).last().getBody()
+
+issue.setDescription(lastcom);
